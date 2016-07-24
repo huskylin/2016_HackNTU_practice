@@ -17,26 +17,11 @@
   </head>
   <body>
     <div id="map"></div>
+    <script src="mapStyle.js">
+    </script>
     <script>
 function initMap() {
-  var customMapType = new google.maps.StyledMapType([
-      {
-        stylers: [
-          {hue: '#000000'},
-          {visibility: 'simplified'},
-          {gamma: 0.5},
-          {weight: 0.5}
-        ]
-      },
-      {
-        elementType: 'labels',
-        stylers: [{visibility: 'off'}]
-      },
-      {
-        featureType: 'water',
-        stylers: [{color: '#000000'}]
-      }
-    ], {
+  var customMapType = new google.maps.StyledMapType(mapStyle, {
       name: 'Custom Style'
   });
   var customMapTypeId = 'custom_style';
