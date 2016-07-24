@@ -2,21 +2,13 @@
   "name": "2016_hackntu_practive",
   "version": "1.0.0",
   "description": "",
+  "author": "huskylin YogaPan yanwei841112",
+  "license": "ISC",
   "main": "index.js",
-  "scripts": {
-    "start": "npm run dev",
-    "test": "npm run lint",
-    "dev": "nodemon index.js",
-    "lint": "eslint .",
-    "precommit": "npm test",
-    "prepush": "npm test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/huskylin/2016_HackNTU_practice.git"
   },
-  "author": "YogaPan",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/huskylin/2016_HackNTU_practice/issues"
   },
@@ -44,6 +36,14 @@
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-react": "^5.2.2",
     "husky": "^0.11.5"
+  },
+  "scripts": {
+    "start": "npm run dev",
+    "test": "npm run lint",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "precommit": "npm test",
+    "prepush": "npm test"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
