@@ -1,4 +1,4 @@
-const Koa = require('Koa');
+const Koa = require('koa');
 const views = require('koa-views');
 const serve = require('koa-static');
 const logger = require('koa-logger');
@@ -24,7 +24,7 @@ app.use(serve(path.join(__dirname, '/public')));
 
 
 // Catch all unhandled server internal errors and display message.
-//app.env = 'product';
+// app.env = 'product';
 app.use(async (ctx, next) => {
   try {
     await next();
@@ -37,7 +37,7 @@ app.use(async (ctx, next) => {
     // Show message to client side.
     // NOTE: THis only enable when in "development" env.
     // Get rid of this feature, set app.env = "product".
-    if ('development' === app.env) {
+    if (app.env === 'development') {
       switch (ctx.accepts('html', 'json')) {
         case 'html':
           ctx.type = 'html';
@@ -73,8 +73,9 @@ app.use(async (ctx, next) => {
 app.use(async (ctx, next) => {
   await next();
 
-  if (404 !== ctx.status)
+  if (ctx.status !== 404) {
     return;
+  }
   ctx.status = 404;
 
   switch (ctx.accepts('html', 'json')) {
