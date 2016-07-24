@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "npm run dev",
     "test": "npm run lint",
+    "dev": "nodemon index.js",
     "lint": "eslint .",
     "precommit": "npm test",
     "prepush": "npm test"
