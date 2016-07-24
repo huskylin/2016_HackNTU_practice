@@ -37,8 +37,77 @@ function initMap() {
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
 }
-
     </script>
+<script type="text/javascript">
+    if (!vm.location.address && navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            $scope.$apply(function () {
+                                vm.location.longitude = pos.lng.toFixed(6);
+                                vm.location.latitude = pos.lat.toFixed(6);
+                            });
+                            map.setCenter(pos);
+                            marker.setPosition(pos);
+                            cityCircle.setCenter(pos);
+                        })
+                    }
+    function searchPlace(geocoder, map, marker, cityCircle) {
+                geocoder.geocode({'address': vm.location.address}, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        geocodeAddress(results[0], map, marker, cityCircle)
+
+                    } else {
+                        alert('此位置無法定址');
+                    }
+                });
+            }
+    function geocodeAddress(place, map, marker, cityCircle) {
+                var locationData = place.geometry.location;
+                var viewPortData = place.geometry.viewport;
+
+                map.setCenter(locationData);
+                marker.setPosition(locationData);
+
+                var bounds = new google.maps.LatLngBounds();
+                if (viewPortData) {
+                    bounds.union(viewPortData);
+                } else {
+                    bounds.extend(locationData);
+                }
+                map.fitBounds(bounds);
+
+                $scope.$apply(function () {
+                    vm.location.address = place.formatted_address;
+                    vm.location.longitude = locationData.lng().toFixed(6);
+                    vm.location.latitude = locationData.lng().toFixed(6);
+                });
+                cityCircle.setCenter({
+                    lat: locationData.H,
+                    lng: locationData.L
+                })
+
+            }
+    function autoCompletePlace(map, marker, cityCircle) {
+                var input = document.getElementById('address');
+                var searchBox = new google.maps.places.SearchBox(input);
+
+                map.addListener('bounds_changed', function () {
+                    searchBox.setBounds(map.getBounds());
+                });
+                searchBox.addListener('places_changed', function () {
+                    var places = searchBox.getPlaces();
+                    if (places.length == 0) {
+                        return;
+                    }
+                    geocodeAddress(places[0], map, marker, cityCircle);
+                });
+            }
+
+</script>>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNvjwjdaBOWHgdztYyb7xSNjGpVrtizb0&signed_in=true&callback=initMap"
         async defer></script>
   </body>
