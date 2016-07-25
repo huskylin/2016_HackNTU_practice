@@ -16,7 +16,7 @@ app.use(logger());
 
 // Use ejs as template engines.
 app.use(views(path.join(__dirname, '/views'), {
-  map: { ejs: 'ejs' }
+  map: { ejs: 'ejs' },
 }));
 
 // Serve static files in "public" directory.
