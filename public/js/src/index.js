@@ -25,7 +25,7 @@ function initMap() {
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: {lat: 40.674, lng: -73.946},  // Brooklyn.
+    center: { lat: 40.674, lng: -73.946 },  // Brooklyn.
     mapTypeControlOptions: {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId],
     },
@@ -83,7 +83,7 @@ function initMap() {
   // [START region_getplaces]
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener('places_changed',() => {
+  searchBox.addListener('places_changed', () => {
     let places = searchBox.getPlaces();
 
     if (places.length === 0) {
