@@ -39,7 +39,6 @@
     "test": "npm run lint",
     "dev": "webpack --watch",
     "lint": "eslint .",
-    "precommit": "npm test",
-    "prepush": "npm test"
+    "precommit": "npm test"
   }
 }
