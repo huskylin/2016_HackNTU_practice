@@ -19,7 +19,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function initMap() {
   const customMapType = new google.maps.StyledMapType(mapStyle, {
-    name: 'Custom Style'
+    name: 'Custom Style',
   });
   const customMapTypeId = 'custom_style';
 
@@ -27,8 +27,8 @@ function initMap() {
     zoom: 12,
     center: {lat: 40.674, lng: -73.946},  // Brooklyn.
     mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
-    }
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId],
+    },
   });
   map.mapTypes.set(customMapTypeId, customMapType);
   map.setMapTypeId(customMapTypeId);
@@ -104,7 +104,7 @@ function initMap() {
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
+        scaledSize: new google.maps.Size(25, 25),
       };
 
       // Create a marker for each place.
@@ -112,7 +112,7 @@ function initMap() {
         map: map,
         icon: icon,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
       }));
 
       if (place.geometry.viewport) {
