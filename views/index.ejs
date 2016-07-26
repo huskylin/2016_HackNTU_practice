@@ -80,8 +80,9 @@
             mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
           }
         });
-
-        /*
+        map.mapTypes.set(customMapTypeId, customMapType);
+        map.setMapTypeId(customMapTypeId);
+        
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
@@ -137,12 +138,10 @@
           });
           map.fitBounds(bounds);
         });
-        // [END region_getplaces]*/
-        map.mapTypes.set(customMapTypeId, customMapType);
-        map.setMapTypeId(customMapTypeId);
+        // [END region_getplaces]
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNvjwjdaBOWHgdztYyb7xSNjGpVrtizb0&signed_in=true&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNvjwjdaBOWHgdztYyb7xSNjGpVrtizb0&libraries=places&signed_in=true&callback=initMap"
     async defer></script>
   </body>
 </html>
