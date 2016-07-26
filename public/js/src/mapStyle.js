@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-const mapStyle = [{
+export const mapStyle = [{
   featureType: 'all',
   elementType: 'labels.text.fill',
   stylers: [{
