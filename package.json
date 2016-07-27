@@ -35,10 +35,12 @@
     "webpack": "^1.13.1"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon . --ignore public/ --ignore webpack.config.js",
     "test": "npm run lint",
     "dev": "webpack --watch",
+    "product": "webpack -p --progress",
     "lint": "eslint .",
-    "precommit": "npm test"
+    "precommit": "npm test",
+    "prepush": "npm test"
   }
 }

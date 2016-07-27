@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -18,4 +19,21 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['', '.js', '.json'],
+  },
+  plugins: [
+    /*
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    */
+  ],
 };
