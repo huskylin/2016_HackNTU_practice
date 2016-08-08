@@ -1,4 +1,5 @@
 import { mapStyle } from './mapStyle.js';
+import 'whatwg-fetch';
 
 const cityMap = {
   banchiou: {
@@ -151,5 +152,14 @@ function initMap() {
   });
   // [END region_getplaces]
 }
+
+fetch('/api')
+  .then(function(response) {
+    return response.json();
+  }).then(function(json) {
+    console.log('parsed json', json);
+  }).catch(function(e) {
+    console.log('parsing failed', e);
+  });
 
 window.initMap = initMap;
